@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add some basic styling for the calculator */
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color:white;
+        }
+        input[type="text"]{
+            width: 210px;
+            height: 70px;
+            font-size: 25px;
+        }
+        input[type="button"] {
+            width: 70px;
+            height: 70px;
+            font-size: 25px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" disabled >
+        <input type="button" value="AC" onclick="clearResult()" style="background-color:rgb(18, 141, 110)"><br>
+        <br>
+        <input type="button" value="7" onclick="addToResult('7')" style="background-color: black;">
+        <input type="button" value="8" onclick="addToResult('8')" style="background-color: black;">
+        <input type="button" value="9" onclick="addToResult('9')" style="background-color: black;">
+        <input type="button" value="/" onclick="addToResult('/')" style="background-color: rgb(108, 102, 102);">
+        <br>
+        <input type="button" value="4" onclick="addToResult('4')" style="background-color: black;">
+        <input type="button" value="5" onclick="addToResult('5')" style="background-color: black;">
+        <input type="button" value="6" onclick="addToResult('6')" style="background-color: black;">
+        <input type="button" value="-" onclick="addToResult('-')" style="background-color: rgb(108, 102, 102);">
+        <br>
+        <input type="button" value="1" onclick="addToResult('1')" style="background-color: black;">
+        <input type="button" value="2" onclick="addToResult('2')" style="background-color: black;">
+        <input type="button" value="3" onclick="addToResult('3')" style="background-color: black;">
+        <input type="button" value="+" onclick="addToResult('+')" style="background-color: rgb(108, 102, 102);">
+        <br>
+        <input type="button" value="." onclick="addToResult('.')" style="background-color: black;">
+        <input type="button" value="0" onclick="addToResult('0')" style="background-color: black;">
+        <input type="button" value="=" onclick="calculateResult()" style="background-color: black;">
+        <input type="button" value="*" onclick="addToResult('*')" style="background-color: rgb(108, 102, 102);">
+    </div>
+
+    <script>
+        function addToResult(value) {
+            document.getElementById("result").value += value;
+        }
+
+        function clearResult() {
+            document.getElementById("result").value = '';
+        }
+
+        function calculateResult() {
+            const expression = document.getElementById("result").value;
+            try {
+                const result = eval(expression);
+                document.getElementById("result").value = result;
+            } catch (error) {
+                document.getElementById("result").value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>

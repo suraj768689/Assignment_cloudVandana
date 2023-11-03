@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add some basic styling for the form */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .gender-line {
+          display: flex;
+          align-items: center;
+         }
+
+        .gender-label {
+           display: flex;
+           align-items: center;
+           margin-right: 10px;
+        }
+
+         .gender-label input {
+          margin-right: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center;">Survey Form</h1>
+        <form id="surveyForm" onsubmit="return false;">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required>
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" required>
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="Canada">Canada</option>
+                <option value="UK">UK</option>
+                <option value="China">China</option>
+                <!-- Add more options as needed -->
+            </select>
+            <label>Gender:</label>
+             <div class="gender-line">
+                 <label class="gender-label">
+                   <input type="radio" name="gender" value="Male"> Male
+                 </label>
+                 <label class="gender-label">
+                     <input type="radio" name="gender" value="Female"> Female
+                 </label>
+             </div>
+
+            <label for="profession">Profession:</label>
+            <input type="text" id="profession" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" required>
+            <button type="button" onclick="submitForm()">Submit</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() {
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const dob = document.getElementById("dob").value;
+            const country = document.getElementById("country").value;
+            const gender = [...document.querySelectorAll('input[type="checkbox"][name="gender"]:checked')].map(checkbox => checkbox.value).join(", ");
+            const profession = document.getElementById("profession").value;
+            const email = document.getElementById("email").value;
+            const mobile = document.getElementById("mobile").value;
+
+            const popupContent = `
+                First Name: ${firstName}
+                Last Name: ${lastName}
+                Date of Birth: ${dob}
+                Country: ${country}
+                Gender: ${gender}
+                Profession: ${profession}
+                Email: ${email}
+                Mobile Number: ${mobile}
+            `;
+
+            alert(popupContent);
+
+            resetForm();
+        }
+
+        function resetForm() {
+            document.getElementById("surveyForm").reset();
+        }
+    </script>
+</body>
+</html>
